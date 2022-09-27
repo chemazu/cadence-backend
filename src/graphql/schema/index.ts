@@ -4,12 +4,9 @@ const schema = buildSchema(`
 type User {
     id: ID!
     name: String!
-    phone: String!
     email: String!
     password: String!
     type: String!
-    balance: Int!
-    currency: String!
     createdAt: String!
 }
 
@@ -41,7 +38,7 @@ type Query {
 
 type Mutation {
     createTransaction(phone: String!, amount: Int!, narration: String!, transactionType: String!,): Transaction!
-    createUser(name: String!, phone: String!, email:String! password: String!, type: String!,): UserResponse
+    createUser(firstname: String!,lastname: String!, email:String! password: String!, type: String!,): UserResponse
     login(phone: String!, password: String!): LoginResponse
 }
 
