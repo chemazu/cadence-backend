@@ -3,7 +3,8 @@ import { buildSchema } from "graphql";
 const schema = buildSchema(`
 type User {
     id: ID!
-    name: String!
+    firstname: String!
+    lastname: String!
     email: String!
     password: String!
     type: String!
@@ -11,10 +12,6 @@ type User {
 }
 
 type UserResponse {
-    user: User!
-    token: String
-}
-type LoginResponse {
     user: User!
     token: String
 }
@@ -39,7 +36,7 @@ type Query {
 type Mutation {
     createTransaction(phone: String!, amount: Int!, narration: String!, transactionType: String!,): Transaction!
     createUser(firstname: String!,lastname: String!, email:String! password: String!, type: String!,): UserResponse
-    login(phone: String!, password: String!): LoginResponse
+    login(email: String!, password: String!): UserResponse
 }
 
     

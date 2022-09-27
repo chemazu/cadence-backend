@@ -53,17 +53,17 @@ var joi_1 = require("joi");
 var bcrypt_1 = require("bcrypt");
 var jsonwebtoken_1 = require("jsonwebtoken");
 exports.createUser = function (args) { return __awaiter(void 0, void 0, void 0, function () {
-    var schema, error, password, phone, dbUser, hashedPassword, encryptedUser, newUser, result, token, error_1;
+    var schema, error, password, email, dbUser, hashedPassword, encryptedUser, newUser, result, token, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 console.log(args);
                 schema = joi_1["default"].object({
-                    name: joi_1["default"].string().required(),
-                    phone: joi_1["default"].string().required(),
+                    firstname: joi_1["default"].string().required(),
+                    email: joi_1["default"].string().required(),
                     password: joi_1["default"].string().required(),
                     type: joi_1["default"].string().required(),
-                    email: joi_1["default"].string().required()
+                    lastname: joi_1["default"].string().required()
                 });
                 error = schema.validate(args).error;
                 if (error) {
@@ -72,11 +72,10 @@ exports.createUser = function (args) { return __awaiter(void 0, void 0, void 0, 
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 5, , 6]);
-                password = args.password, phone = args.phone;
-                return [4 /*yield*/, user_1["default"].findOne({ phone: phone })];
+                password = args.password, email = args.email;
+                return [4 /*yield*/, user_1["default"].findOne({ email: email })];
             case 2:
                 dbUser = _a.sent();
-                console.log(dbUser, "dbuser");
                 if (dbUser) {
                     throw new Error("User already exists");
                 }
@@ -88,7 +87,7 @@ exports.createUser = function (args) { return __awaiter(void 0, void 0, void 0, 
                 return [4 /*yield*/, newUser.save()];
             case 4:
                 result = _a.sent();
-                token = jsonwebtoken_1["default"].sign({ phone: result.phone, password: result.password }, process.env.REACT_APP_JWT_SECRET);
+                token = jsonwebtoken_1["default"].sign({ email: result.email, password: result.password }, process.env.REACT_APP_JWT_SECRET);
                 return [2 /*return*/, { user: result, token: token }];
             case 5:
                 error_1 = _a.sent();
@@ -97,25 +96,3 @@ exports.createUser = function (args) { return __awaiter(void 0, void 0, void 0, 
         }
     });
 }); };
-//   {
-// console.log(args)
-//   try {
-//     const { password,phone } = args;
-//     const dbUser = await User.findOne({ phone: phone });
-//     console.log(dbUser ,"dbuser")
-//     if (dbUser) {
-//         throw new Error("User already exists");
-//     }
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const encryptedUser = { ...args, password: hashedPassword };
-//     const newUser = new User(encryptedUser);
-//     const result = await newUser.save();
-//     const token = jwt.sign(
-//       { phone: result.phone, password: result.password },
-//       process.env.REACT_APP_JWT_SECRET
-//     )
-//     return {user:result,token}
-//   } catch (error) {
-//     throw new Error(error.message);
-//   }
-// };

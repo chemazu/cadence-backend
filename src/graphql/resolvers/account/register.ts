@@ -24,7 +24,6 @@ export const createUser = async (args: {
   try {
     const { password, email } = args;
     const dbUser = await User.findOne({ email: email });
-    console.log(dbUser, "dbuser");
     if (dbUser) {
       throw new Error("User already exists");
     }

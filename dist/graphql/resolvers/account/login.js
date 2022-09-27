@@ -18,8 +18,8 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const login = (args) => __awaiter(void 0, void 0, void 0, function* () {
     // console.log(args)
-    const { password, phone } = args;
-    const user = yield user_1.default.findOne({ phone: phone });
+    const { password, email } = args;
+    const user = yield user_1.default.findOne({ email });
     if (!user) {
         throw new Error("Invalid Credentials");
     }
@@ -27,7 +27,7 @@ const login = (args) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(isPasswordValid, user);
     const pass = yield bcrypt_1.default.compare(password, user.password);
     if (pass && user) {
-        const token = jsonwebtoken_1.default.sign({ phone: user.phone, password: user.password }, process.env.REACT_APP_JWT_SECRET);
+        const token = jsonwebtoken_1.default.sign({ email: user.email, password: user.password }, process.env.REACT_APP_JWT_SECRET);
         return { user, token };
     }
     throw new Error("Invalid Credentials");

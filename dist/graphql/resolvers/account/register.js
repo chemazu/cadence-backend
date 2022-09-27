@@ -33,7 +33,6 @@ const createUser = (args) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { password, email } = args;
         const dbUser = yield user_1.default.findOne({ email: email });
-        console.log(dbUser, "dbuser");
         if (dbUser) {
             throw new Error("User already exists");
         }

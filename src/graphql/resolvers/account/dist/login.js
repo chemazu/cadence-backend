@@ -41,12 +41,12 @@ var user_1 = require("../../../models/user");
 var jsonwebtoken_1 = require("jsonwebtoken");
 var bcrypt_1 = require("bcrypt");
 exports.login = function (args) { return __awaiter(void 0, void 0, void 0, function () {
-    var password, phone, user, isPasswordValid, pass, token;
+    var password, email, user, pass, token;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                password = args.password, phone = args.phone;
-                return [4 /*yield*/, user_1["default"].findOne({ phone: phone })];
+                password = args.password, email = args.email;
+                return [4 /*yield*/, user_1["default"].findOne({ email: email })];
             case 1:
                 user = _a.sent();
                 if (!user) {
@@ -54,13 +54,9 @@ exports.login = function (args) { return __awaiter(void 0, void 0, void 0, funct
                 }
                 return [4 /*yield*/, bcrypt_1["default"].compare(password, user.password)];
             case 2:
-                isPasswordValid = _a.sent();
-                console.log(isPasswordValid, user);
-                return [4 /*yield*/, bcrypt_1["default"].compare(password, user.password)];
-            case 3:
                 pass = _a.sent();
                 if (pass && user) {
-                    token = jsonwebtoken_1["default"].sign({ phone: user.phone, password: user.password }, process.env.REACT_APP_JWT_SECRET);
+                    token = jsonwebtoken_1["default"].sign({ email: user.email, password: user.password }, process.env.REACT_APP_JWT_SECRET);
                     return [2 /*return*/, { user: user, token: token }];
                 }
                 throw new Error("Invalid Credentials");

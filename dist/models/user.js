@@ -13,10 +13,6 @@ const UserSchema = new mongoose_1.default.Schema({
         type: String,
         required: [true, "Name is required"],
     },
-    phone: {
-        type: String,
-        required: [true, "Phone is required"],
-    },
     password: {
         type: String,
         required: [true, "Password is required"],
