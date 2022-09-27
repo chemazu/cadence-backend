@@ -6,7 +6,7 @@ import { graphqlHTTP } from "express-graphql";
 import root from "./graphql/resolvers/index";
 import schema from "./graphql/schema/index";
 
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 
@@ -16,8 +16,6 @@ app.get("/", (req, res) => {
 
 app.use(cors());
 app.use(express.json());
-
-
 
 config();
 app.use(
