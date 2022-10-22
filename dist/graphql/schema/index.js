@@ -11,40 +11,26 @@ type User {
     type: String!
     createdAt: String!
 }
-
 type UserResponse {
     user: User!
     token: String
 }
-type Transaction {
-    id: ID!
-    phone: String!
-    amount: Int!
-    narration: String!
- 
-    transactionType: String!
-    userId: String!
-  
-    
-    balanceAfter: Int!
-    createdAt: String!
+type OrderResponse{
+    status:String!
+ orderId:String
 }
 
 type Query {
-    getUser(phone:String!): User!
-    getTransactions(phone:String!): [Transaction!]!}
+    getUser(phone:String!): User!}
 
-type Mutation {
-    createTransaction(phone: String!, amount: Int!, narration: String!, transactionType: String!,): Transaction!
-    createUser(firstname: String!,lastname: String!, email:String! password: String!, type: String!,): UserResponse
-    login(email: String!, password: String!): UserResponse
-}
-
-    
-    schema {
-        query: Query
-        mutation: Mutation
+    type Mutation {
+        createOrder(  userId:String  ,
+            orderTotal : Int ,
+            paymentId :String ,
+            orderItems :[String]! ,) :OrderResponse
+        createUser(firstname: String!,lastname: String!, email:String! password: String!, type: String!,): UserResponse
+        login(email: String!, password: String!): UserResponse
     }
-    `);
+`);
 exports.default = schema;
 //# sourceMappingURL=index.js.map

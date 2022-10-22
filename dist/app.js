@@ -10,7 +10,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const express_graphql_1 = require("express-graphql");
 const index_1 = __importDefault(require("./graphql/resolvers/index"));
 const index_2 = __importDefault(require("./graphql/schema/index"));
-const port = 8000;
+const port = process.env.PORT || 8000;
 const app = (0, express_1.default)();
 app.get("/", (req, res) => {
     res.send("Hello World!");

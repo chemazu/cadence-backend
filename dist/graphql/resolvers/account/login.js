@@ -23,8 +23,8 @@ const login = (args) => __awaiter(void 0, void 0, void 0, function* () {
     if (!user) {
         throw new Error("Invalid Credentials");
     }
-    const isPasswordValid = yield bcrypt_1.default.compare(password, user.password);
-    console.log(isPasswordValid, user);
+    // const isPasswordValid = await bcrypt.compare(password, user.password);
+    // console.log(isPasswordValid, user);
     const pass = yield bcrypt_1.default.compare(password, user.password);
     if (pass && user) {
         const token = jsonwebtoken_1.default.sign({ email: user.email, password: user.password }, process.env.REACT_APP_JWT_SECRET);

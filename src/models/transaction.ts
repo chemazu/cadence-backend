@@ -23,9 +23,6 @@ const TransactionSchema = new mongoose.Schema({
     type: String,
     required: [true, "Transaction type is required"],
   },
-  balanceAfter: {
-    type: Number,
-  },
   createdAt: {
     type: Date,
     default: () => Date.now(),

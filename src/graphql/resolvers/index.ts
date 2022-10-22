@@ -1,17 +1,14 @@
 import User from "../../models/user";
-// import jwt from "jsonwebtoken";
 import { createUser } from "./account/register";
 import { login } from "./account/login";
-// import { createTransaction } from "./transaction/createTransaction";
 import { getUser } from "./account/getUser";
-import { getTransactions } from "./transaction/getTransactions";
+import createOrder from "./order/createOrder";
 
 const root = {
   createUser,
   login,
-  // createTransaction,
+  createOrder,
   getUser,
-  getTransactions,
 };
 
 export default root;
