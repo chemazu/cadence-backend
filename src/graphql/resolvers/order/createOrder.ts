@@ -1,6 +1,6 @@
 import Order from "../../../models/order.model";
 import Joi from "joi";
-const createUser = async (args: {
+const createOrder = async (args: {
   userId: string;
   orderTotal: number;
   paymentId: string;
@@ -18,7 +18,6 @@ const createUser = async (args: {
   }
   try {
     const newOrder = await Order.create(args);
-    console.log(newOrder, "cre");
     return {
       status: "success",
       orderId: newOrder._id,
@@ -28,4 +27,4 @@ const createUser = async (args: {
   }
 };
 
-export default createUser;
+export default createOrder;

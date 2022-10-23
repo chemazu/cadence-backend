@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var mongoose_1 = require("mongoose");
 var mongoose_2 = require("mongoose");
-var TransactionSchema = new mongoose_1["default"].Schema({
+var PaymentSchema = new mongoose_1["default"].Schema({
     phone: {
         type: String,
         required: [true, "Account number is required"]
@@ -42,4 +42,4 @@ var TransactionSchema = new mongoose_1["default"].Schema({
 // transactionType	string	Required The type of transaction
 // valueDate	datetime	Required The value date for transaction on the system in the format DDMMYYYY
 // balanceAfter	number	Optional The balance of the account after the transaction was approved or authorized
-exports["default"] = mongoose_1["default"].model("Transaction", TransactionSchema);
+exports["default"] = mongoose_1["default"].model("Payment", PaymentSchema);

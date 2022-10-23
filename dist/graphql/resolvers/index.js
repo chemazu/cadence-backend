@@ -7,8 +7,10 @@ const register_1 = require("./account/register");
 const login_1 = require("./account/login");
 const getUser_1 = require("./account/getUser");
 const createOrder_1 = __importDefault(require("./order/createOrder"));
+const createPayment_1 = __importDefault(require("./payment/createPayment"));
 const root = {
     createUser: register_1.createUser,
+    createPayment: createPayment_1.default,
     login: login_1.login,
     createOrder: createOrder_1.default,
     getUser: getUser_1.getUser,

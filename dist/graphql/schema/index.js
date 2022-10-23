@@ -28,6 +28,7 @@ type Query {
             orderTotal : Int ,
             paymentId :String ,
             orderItems :[String]! ,) :OrderResponse
+            createPayment(userId:String,amount:Int,platform:String):OrderResponse
         createUser(firstname: String!,lastname: String!, email:String! password: String!, type: String!,): UserResponse
         login(email: String!, password: String!): UserResponse
     }

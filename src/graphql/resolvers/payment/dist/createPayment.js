@@ -36,18 +36,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var order_model_1 = require("../../../models/order.model");
+var payment_model_1 = require("../../../models/payment.model");
 var joi_1 = require("joi");
-var createOrder = function (args) { return __awaiter(void 0, void 0, void 0, function () {
-    var schema, error, newOrder, error_1;
+var createPayment = function (args) { return __awaiter(void 0, void 0, void 0, function () {
+    var schema, error, newPayment, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 schema = joi_1["default"].object({
                     userId: joi_1["default"].string().required(),
-                    orderTotal: joi_1["default"].number().required(),
-                    paymentId: joi_1["default"].string().required(),
-                    orderItems: joi_1["default"].array().items(joi_1["default"].string()).required()
+                    amount: joi_1["default"].number().required(),
+                    platform: joi_1["default"].string().required()
                 });
                 error = schema.validate(args).error;
                 if (error) {
@@ -56,12 +55,12 @@ var createOrder = function (args) { return __awaiter(void 0, void 0, void 0, fun
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, order_model_1["default"].create(args)];
+                return [4 /*yield*/, payment_model_1["default"].create(args)];
             case 2:
-                newOrder = _a.sent();
+                newPayment = _a.sent();
                 return [2 /*return*/, {
                         status: "success",
-                        orderId: newOrder._id
+                        paymentId: newPayment._id
                     }];
             case 3:
                 error_1 = _a.sent();
@@ -70,4 +69,4 @@ var createOrder = function (args) { return __awaiter(void 0, void 0, void 0, fun
         }
     });
 }); };
-exports["default"] = createOrder;
+exports["default"] = createPayment;

@@ -12,29 +12,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const order_model_1 = __importDefault(require("../../../models/order.model"));
+const payment_model_1 = __importDefault(require("../../../models/payment.model"));
 const joi_1 = __importDefault(require("joi"));
-const createOrder = (args) => __awaiter(void 0, void 0, void 0, function* () {
+const createPayment = (args) => __awaiter(void 0, void 0, void 0, function* () {
     const schema = joi_1.default.object({
         userId: joi_1.default.string().required(),
-        orderTotal: joi_1.default.number().required(),
-        paymentId: joi_1.default.string().required(),
-        orderItems: joi_1.default.array().items(joi_1.default.string()).required(),
+        amount: joi_1.default.number().required(),
+        platform: joi_1.default.string().required(),
     });
     const { error } = schema.validate(args);
     if (error) {
         throw new Error(error.details[0].message);
     }
     try {
-        const newOrder = yield order_model_1.default.create(args);
+        const newPayment = yield payment_model_1.default.create(args);
         return {
             status: "success",
-            orderId: newOrder._id,
+            orderId: newPayment._id,
         };
     }
     catch (error) {
         throw new Error(error.details[0].message);
     }
 });
-exports.default = createOrder;
-//# sourceMappingURL=createOrder.js.map
+exports.default = createPayment;
+//# sourceMappingURL=createPayment.js.map
