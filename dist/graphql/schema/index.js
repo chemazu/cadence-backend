@@ -19,6 +19,10 @@ type OrderResponse{
     status:String!
  orderId:String
 }
+type PaymentResponse{
+    status:String!
+ paymentId:String
+}
 
 type Query {
     getUser(phone:String!): User!}
@@ -28,7 +32,7 @@ type Query {
             orderTotal : Int ,
             paymentId :String ,
             orderItems :[String]! ,) :OrderResponse
-            createPayment(userId:String,amount:Int,platform:String):OrderResponse
+            createPayment(userId:String,amount:Int,platform:String):PaymentResponse
         createUser(firstname: String!,lastname: String!, email:String! password: String!, type: String!,): UserResponse
         login(email: String!, password: String!): UserResponse
     }

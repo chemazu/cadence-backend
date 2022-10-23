@@ -28,7 +28,7 @@ const createPayment = (args) => __awaiter(void 0, void 0, void 0, function* () {
         const newPayment = yield payment_model_1.default.create(args);
         return {
             status: "success",
-            orderId: newPayment._id,
+            paymentId: newPayment._id,
         };
     }
     catch (error) {
