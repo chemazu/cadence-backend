@@ -16,7 +16,15 @@ const createPayment = async (args: {
   const schema = Joi.object({
     userId: Joi.string().required(),
     amount: Joi.number().required(),
-
+    paystackResponse: Joi.object({
+      message: Joi.string().required(),
+      redirecturl: Joi.string().required(),
+      reference: Joi.string().required(),
+      status: Joi.string().required(),
+      trans: Joi.string().required(),
+      transaction: Joi.string().required(),
+      trxref: Joi.string().required(),
+    }),
   });
   const { error } = schema.validate(args);
   if (error) {

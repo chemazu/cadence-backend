@@ -18,7 +18,7 @@ const PaymentSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  paystackResposne:{
+  paystackResponse:{
     message: String,
     redirecturl: String,
     reference: String,

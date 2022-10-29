@@ -19,7 +19,7 @@ var PaymentSchema = new mongoose_1["default"].Schema({
         type: mongoose_2.Schema.Types.ObjectId,
         ref: "User"
     },
-    paystackResposne: {
+    paystackResponse: {
         message: String,
         redirecturl: String,
         reference: String,

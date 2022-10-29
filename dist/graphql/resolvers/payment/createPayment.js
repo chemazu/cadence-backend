@@ -18,6 +18,15 @@ const createPayment = (args) => __awaiter(void 0, void 0, void 0, function* () {
     const schema = joi_1.default.object({
         userId: joi_1.default.string().required(),
         amount: joi_1.default.number().required(),
+        paystackResponse: joi_1.default.object({
+            message: joi_1.default.string().required(),
+            redirecturl: joi_1.default.string().required(),
+            reference: joi_1.default.string().required(),
+            status: joi_1.default.string().required(),
+            trans: joi_1.default.string().required(),
+            transaction: joi_1.default.string().required(),
+            trxref: joi_1.default.string().required(),
+        }),
     });
     const { error } = schema.validate(args);
     if (error) {

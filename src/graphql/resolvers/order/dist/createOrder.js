@@ -77,7 +77,6 @@ var createOrder = function (args) { return __awaiter(void 0, void 0, void 0, fun
                     }];
             case 3:
                 error_1 = _a.sent();
-                // throw new Error(error.details[0].message);
                 console.log(error_1);
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];

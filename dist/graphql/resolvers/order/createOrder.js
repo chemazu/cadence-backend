@@ -45,13 +45,8 @@ const createOrder = (args) => __awaiter(void 0, void 0, void 0, function* () {
         };
     }
     catch (error) {
-        // throw new Error(error.details[0].message);
         console.log(error);
     }
-    // return {
-    //   status: "String",
-    //   orderId: "String",
-    // };
 });
 exports.default = createOrder;
 //# sourceMappingURL=createOrder.js.map

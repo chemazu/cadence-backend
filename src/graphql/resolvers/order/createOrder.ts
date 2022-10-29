@@ -1,6 +1,5 @@
 import Joi from "joi";
 import Order from "../../../models/order.model";
-
 const createOrder = async (args: {
   userId: string;
   orderTotal: number;
@@ -50,12 +49,7 @@ const createOrder = async (args: {
       orderId: newOrder._id,
     };
   } catch (error) {
-    // throw new Error(error.details[0].message);
-    console.log(error)
+    console.log(error);
   }
-  // return {
-  //   status: "String",
-  //   orderId: "String",
-  // };
 };
 export default createOrder;
