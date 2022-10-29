@@ -26,10 +26,19 @@ const OrderSchema = new mongoose_2.Schema({
         type: Date,
         default: () => Date.now(),
     },
-    orderItems: {
-        type: (Array),
-        required: [true, "Order Items is required"],
-    },
+    orderItems: [
+        {
+            cardtype: String,
+            category: String,
+            img1: String,
+            img2: String,
+            name: String,
+            price: Number,
+            property: String,
+            quantity: Number,
+            year: Number,
+        },
+    ],
     // orderItems {
     // orderTotal
     // orderBreaker

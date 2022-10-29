@@ -12,27 +12,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const joi_1 = __importDefault(require("joi"));
 const order_model_1 = __importDefault(require("../../../models/order.model"));
+const joi_1 = __importDefault(require("joi"));
 const createOrder = (args) => __awaiter(void 0, void 0, void 0, function* () {
     const schema = joi_1.default.object({
         userId: joi_1.default.string().required(),
         orderTotal: joi_1.default.number().required(),
         paymentId: joi_1.default.string().required(),
-        orderItems: joi_1.default.array()
-            .items(joi_1.default.object({
-            cardtype: joi_1.default.string(),
-            category: joi_1.default.string(),
-            img1: joi_1.default.string(),
-            img2: joi_1.default.string(),
-            name: joi_1.default.string(),
-            price: joi_1.default.number().required(),
-            property: joi_1.default.string(),
-            quantity: joi_1.default.number().required(),
-            year: joi_1.default.number().required(),
-        }))
-            .required(),
+        // orderItems: Joi.array().items(Joi.string()).required(),
     });
+    console.log(args);
     const { error } = schema.validate(args);
     if (error) {
         throw new Error(error.details[0].message);
@@ -45,13 +34,8 @@ const createOrder = (args) => __awaiter(void 0, void 0, void 0, function* () {
         };
     }
     catch (error) {
-        // throw new Error(error.details[0].message);
         console.log(error);
     }
-    // return {
-    //   status: "String",
-    //   orderId: "String",
-    // };
 });
 exports.default = createOrder;
-//# sourceMappingURL=createOrder.js.map
+//# sourceMappingURL=createOrder%20copy.js.map

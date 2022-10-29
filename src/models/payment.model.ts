@@ -6,10 +6,6 @@ const PaymentSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Amount is required"],
   },
-  platform: {
-    type: String,
-    required: [true, "A description of the transaction"],
-  },
   transactionTime: {
     type: Date,
     default: () => Date.now(),
@@ -22,5 +18,14 @@ const PaymentSchema = new mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  paystackResposne:{
+    message: String,
+    redirecturl: String,
+    reference: String,
+    status: String,
+    trans: String,
+    transaction: String,
+    trxref: String,
+  }
 });
 export default mongoose.model("Payment", PaymentSchema);

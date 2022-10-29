@@ -7,10 +7,6 @@ var PaymentSchema = new mongoose_1["default"].Schema({
         type: Number,
         required: [true, "Amount is required"]
     },
-    platform: {
-        type: String,
-        required: [true, "A description of the transaction"]
-    },
     transactionTime: {
         type: Date,
         "default": function () { return Date.now(); }
@@ -22,6 +18,15 @@ var PaymentSchema = new mongoose_1["default"].Schema({
     userId: {
         type: mongoose_2.Schema.Types.ObjectId,
         ref: "User"
+    },
+    paystackResposne: {
+        message: String,
+        redirecturl: String,
+        reference: String,
+        status: String,
+        trans: String,
+        transaction: String,
+        trxref: String
     }
 });
 exports["default"] = mongoose_1["default"].model("Payment", PaymentSchema);

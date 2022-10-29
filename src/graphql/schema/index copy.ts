@@ -3,45 +3,58 @@ import { buildSchema } from "graphql";
 const schema = buildSchema(`
 type User {
     id: ID!
-    name: String!
-    phone: String!
+    firstname: String!
+    lastname: String!
     email: String!
     password: String!
     type: String!
-    balance: Int!
-    currency: String!
     createdAt: String!
 }
-
 type UserResponse {
-    user: User
+    user: User!
     token: String
 }
-type Transaction {
-    id: ID!
-    phone: String!
-    amount: Int!
-    narration: String!
-    accountType: String!
-    transactionType: String!
-    userId: String!
-    currency: String!
-    channel: String!
-    balanceAfter: Int!
-    createdAt: String!
+type OrderResponse{
+    status:String!
+ orderId:String
+}
+type OrderItems{
+    // cardtype: String!;
+    // category: String!;
+    // img1: String!;
+    // img2: String!;
+    // name: String!;
+    // price: Int!;
+    // property: String!;
+    // quantity: Int!;
+    // year: Int!;
+  }
+type PaystackResponse {
+    message: String;
+    redirecturl: String;
+    reference: String;
+    status: String;
+    trans: String;
+    transaction: String;
+    trxref: String;
+  
+}
+type PaymentResponse{
+    status:String!
+ paymentId:String
 }
 
 type Query {
-    users: [User!]!
-    login(phone: String!, password: String!): String!
-}
+    getUser(phone:String!): User!}
 
-type Mutation {
-    createUser(name: String!, phone: String!, email:String! password: String!, type: String!,): UserResponse!}
-    createTransaction(phone: String!, amount: Int!, narration: String!, accountType: String!, transactionType: String!,): Transaction!}
-    schema {
-        query: Query
-        mutation: Mutation
+    type Mutation {
+        createOrder(  userId:String  ,
+            orderTotal : Int ,
+            paymentId :String ,
+            orderItems :[OrderItems]! ,) :OrderResponse
+            createPayment(userId:String,amount:Int,paystackResponse:PaystackResponse):PaymentResponse
+        createUser(firstname: String!,lastname: String!, email:String! password: String!, type: String!,): UserResponse
+        login(email: String!, password: String!): UserResponse
     }
-    `);
+`);
 export default schema;

@@ -22,10 +22,19 @@ const OrderSchema = new Schema({
     type: Date,
     default: () => Date.now(),
   },
-  orderItems: {
-    type: Array<string>,
-    required: [true, "Order Items is required"],
-  },
+  orderItems: [
+    {
+      cardtype: String,
+      category: String,
+      img1: String,
+      img2: String,
+      name: String,
+      price: Number,
+      property: String,
+      quantity: Number,
+      year: Number,
+    },
+  ],
   // orderItems {
 
   // orderTotal

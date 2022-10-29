@@ -45,8 +45,7 @@ var createPayment = function (args) { return __awaiter(void 0, void 0, void 0, f
             case 0:
                 schema = joi_1["default"].object({
                     userId: joi_1["default"].string().required(),
-                    amount: joi_1["default"].number().required(),
-                    platform: joi_1["default"].string().required()
+                    amount: joi_1["default"].number().required()
                 });
                 error = schema.validate(args).error;
                 if (error) {

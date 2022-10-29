@@ -3,12 +3,20 @@ import Joi from "joi";
 const createPayment = async (args: {
   userId: string;
   amount: number;
-  platform: string;
+  paystackResponse: {
+    message: string;
+    redirecturl: string;
+    reference: string;
+    status: string;
+    trans: string;
+    transaction: string;
+    trxref: string;
+  };
 }) => {
   const schema = Joi.object({
     userId: Joi.string().required(),
     amount: Joi.number().required(),
-    platform: Joi.string().required(),
+
   });
   const { error } = schema.validate(args);
   if (error) {

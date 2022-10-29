@@ -4,11 +4,11 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "tsc && node dist/app.js",
     "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm run tsc",
-    "dev": "nodemon app.ts",
+    "dev": "tsc && nodemon app.ts",
     "watch-ts": "tsc -w",
     "tsc": "tsc",
 

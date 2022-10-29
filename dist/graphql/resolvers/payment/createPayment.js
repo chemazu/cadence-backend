@@ -18,7 +18,6 @@ const createPayment = (args) => __awaiter(void 0, void 0, void 0, function* () {
     const schema = joi_1.default.object({
         userId: joi_1.default.string().required(),
         amount: joi_1.default.number().required(),
-        platform: joi_1.default.string().required(),
     });
     const { error } = schema.validate(args);
     if (error) {

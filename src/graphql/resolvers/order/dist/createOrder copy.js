@@ -36,8 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var joi_1 = require("joi");
 var order_model_1 = require("../../../models/order.model");
+var joi_1 = require("joi");
 var createOrder = function (args) { return __awaiter(void 0, void 0, void 0, function () {
     var schema, error, newOrder, error_1;
     return __generator(this, function (_a) {
@@ -46,21 +46,9 @@ var createOrder = function (args) { return __awaiter(void 0, void 0, void 0, fun
                 schema = joi_1["default"].object({
                     userId: joi_1["default"].string().required(),
                     orderTotal: joi_1["default"].number().required(),
-                    paymentId: joi_1["default"].string().required(),
-                    orderItems: joi_1["default"].array()
-                        .items(joi_1["default"].object({
-                        cardtype: joi_1["default"].string(),
-                        category: joi_1["default"].string(),
-                        img1: joi_1["default"].string(),
-                        img2: joi_1["default"].string(),
-                        name: joi_1["default"].string(),
-                        price: joi_1["default"].number().required(),
-                        property: joi_1["default"].string(),
-                        quantity: joi_1["default"].number().required(),
-                        year: joi_1["default"].number().required()
-                    }))
-                        .required()
+                    paymentId: joi_1["default"].string().required()
                 });
+                console.log(args);
                 error = schema.validate(args).error;
                 if (error) {
                     throw new Error(error.details[0].message);
@@ -77,7 +65,6 @@ var createOrder = function (args) { return __awaiter(void 0, void 0, void 0, fun
                     }];
             case 3:
                 error_1 = _a.sent();
-                // throw new Error(error.details[0].message);
                 console.log(error_1);
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
