@@ -56,6 +56,7 @@ var createPayment = function (args) { return __awaiter(void 0, void 0, void 0, f
                         trxref: joi_1["default"].string().required()
                     })
                 });
+                console.log(args);
                 error = schema.validate(args).error;
                 if (error) {
                     throw new Error(error.details[0].message);

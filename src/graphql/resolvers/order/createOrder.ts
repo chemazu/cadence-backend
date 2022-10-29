@@ -38,6 +38,7 @@ const createOrder = async (args: {
       )
       .required(),
   });
+  console.log(args);
   const { error } = schema.validate(args);
   if (error) {
     throw new Error(error.details[0].message);

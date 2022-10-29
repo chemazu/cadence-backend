@@ -33,6 +33,7 @@ const createOrder = (args) => __awaiter(void 0, void 0, void 0, function* () {
         }))
             .required(),
     });
+    console.log(args);
     const { error } = schema.validate(args);
     if (error) {
         throw new Error(error.details[0].message);

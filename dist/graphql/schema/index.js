@@ -25,10 +25,10 @@ input OrderItems {
     img1: String!
     img2: String!
     name: String!
-    price: Int!
+    price: Float!
     property: String!
-    quantity: Int!
-    year: Int!
+    quantity: Float!
+    year: Float!
   }
 input PaystackResponse {
     message: String!
@@ -47,8 +47,8 @@ type Query {
     getUser(phone:String!): User!}
 
     type Mutation{
-        createPayment(userId:String,amount:Int,paystackResponse:PaystackResponse):PaymentResponse
-        createOrder(userId:String ,orderTotal : Int ,paymentId :String , orderItems:[OrderItems]) :OrderResponse
+        createPayment(userId:String,amount:Float,paystackResponse:PaystackResponse):PaymentResponse
+        createOrder(userId:String ,orderTotal : Float ,paymentId :String , orderItems:[OrderItems]) :OrderResponse
         createUser(firstname: String!,lastname: String!, email:String! password: String!, type: String!,): UserResponse
         login(email: String!, password: String!): UserResponse
     }

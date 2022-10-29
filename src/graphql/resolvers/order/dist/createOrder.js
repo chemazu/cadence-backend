@@ -61,6 +61,7 @@ var createOrder = function (args) { return __awaiter(void 0, void 0, void 0, fun
                     }))
                         .required()
                 });
+                console.log(args);
                 error = schema.validate(args).error;
                 if (error) {
                     throw new Error(error.details[0].message);
