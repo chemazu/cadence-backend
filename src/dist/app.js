@@ -26,6 +26,7 @@ db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
     console.log("Connected successfully");
 });
+// d
 app.listen(port, function () {
     return console.log("Express is listening at http://localhost:" + port);
 });
